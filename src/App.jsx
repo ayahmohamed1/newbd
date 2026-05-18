@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import NoPage from './pages/NoPage';
-import MainUI from './pages/MainUI';
+import MainUI from './pages/MainUi';
 import Photos from './pages/Photos';
 import Bouquet from './pages/Bouquet';
 import Music from './pages/Music';
