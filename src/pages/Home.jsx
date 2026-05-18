@@ -1,18 +1,29 @@
 import { useNavigate } from 'react-router-dom';
-// استيراد الاستيكر من فولدر assets
+import { useEffect, useRef } from 'react';
 import catVideo from '../assets/hbd.mp4';
 
 export default function Home() {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
+
+  // الكود ده بيجبر الموبايلات (خصوصاً الآيفون) إنها تشغل الفيديو تلقائي كإستيكر
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(e => console.log("في انتظار تفاعل المستخدم", e));
+    }
+  }, []);
 
   return (
     <div className="home-page">
       <video 
+        ref={videoRef}
         src={catVideo} 
-        autoPlay={true}
-        loop={true}
-        muted={true}
-        playsInline={true}
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
         style={{ 
           width: '150px', 
           height: '150px', 

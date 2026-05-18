@@ -446,39 +446,54 @@ body {
 /* =========================================
    تعديلات الموبايل (Responsive Design)
 ========================================= */
+/* =========================================
+   تعديلات الموبايل (Responsive Design)
+========================================= */
 @media (max-width: 768px) {
-  /* تظبيط حجم الكارت الأساسي */
-  .main-card {
-    width: 95vw;
-    height: 90vh;
-    padding: 15px;
+  
+  /* 1. تظبيط صفحة الموسيقى (عشان ميضغطوش بعض) */
+  .music-page {
+    flex-direction: column !important; /* نخلي الكلام فوق والفيديو تحت */
+    justify-content: flex-start !important;
+    padding-top: 40px;
+    overflow-y: auto;
+  }
+  .music-col {
+    width: 90% !important; /* نديها عرض الشاشة كله */
+    margin-bottom: 20px;
+  }
+  .music-player-box {
+    margin: 0 auto;
+    width: 100% !important;
   }
 
-  /* تصغير الخطوط شوية عشان متخرجش بره الشاشة */
-  .stroke-title {
-    font-size: 1.8rem;
+  /* 2. تظبيط ألبوم الصور (عشان ميكركبوش فوق بعض) */
+  .photos-page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    overflow-y: auto !important; /* نسمح بالسكرول */
+    padding-top: 80px !important;
+    padding-bottom: 100px !important;
   }
-  .subtitle {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-
-  /* تظبيط شبكة الهدايا (المربعات) في صفحة MainUI */
-  .gifts-grid {
-    gap: 15px;
-  }
-  .gift-box {
-    width: 130px;
-    height: 130px;
-  }
-
-  /* تظبيط المسافات السفلية لزراير الباك والهوم */
-  .card-content-scroll {
-    padding-bottom: 100px;
-  }
-
-  /* تظبيط ألبوم الصور عشان ميغطيش على بعضه في الموبايل */
+  
+  /* نلغي الأماكن الثابتة ونرصهم تحت بعض بشياكة */
   .polaroid {
-    transform: scale(0.8) !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 85% !important; /* حجم الصورة في الموبايل */
+    margin-bottom: 25px !important;
+  }
+  
+  /* حركة جمالية: نخلي صورة مايلة يمين واللي بعدها شمال */
+  .polaroid:nth-child(even) { transform: rotate(4deg) !important; }
+  .polaroid:nth-child(odd) { transform: rotate(-4deg) !important; }
+
+  /* إخفاء القطط الصغيرة في الموبايل عشان الزحمة */
+  .small-cat-placeholder {
+    display: none !important;
   }
 }
