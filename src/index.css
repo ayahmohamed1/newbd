@@ -452,83 +452,160 @@ body {
 /* =========================================
    التعديلات النهائية للموبايل (Responsive)
 ========================================= */
+/* =========================================
+   MOBILE FIXES — append to bottom of index.css
+   Fixes: Music, Photos, Bouquet, Scroll padding
+========================================= */
 @media (max-width: 768px) {
-  
-  /* 1. تظبيط الكارت الأساسي ومساحة السكرول (عشان الزراير اللي تحت) */
-  .main-card {
-    width: 95vw !important;
-    height: 90vh !important;
-    padding: 10px !important;
-  }
-  .card-content-scroll {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding-bottom: 100px !important; /* مساحة كبيرة تحت عشان الزراير متغطيش على حاجة */
+
+  /* ── GENERAL: Card fills the screen properly ── */
+  body {
+    align-items: flex-start;
+    overflow: hidden;
   }
 
-  /* 2. تظبيط صفحة الورد (Bouquet) اللي كانت بايظة */
-  .bouquet-layout {
+  .main-card {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;        /* dvh respects iOS address bar */
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    padding: 12px 10px !important;
+  }
+
+  /* Extra bottom padding so nav buttons never cover content */
+  .card-content-scroll {
+    padding-bottom: 110px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ── MUSIC PAGE: Stack vertically ── */
+  .music-page {
+    flex-direction: column !important;
+    padding: 10px 5px !important;
+    gap: 16px !important;
+    height: auto !important;
+  }
+
+  .music-col {
+    width: 100% !important;
+    flex: unset !important;
+  }
+
+  .music-text-box {
+    padding: 18px !important;
+  }
+
+  .music-text-box p {
+    font-size: 1rem !important;
+  }
+
+  .music-player-box {
+    width: 100% !important;
+    padding: 12px !important;
+    min-height: 320px !important;
+  }
+
+  /* The video itself: tall enough for portrait/reel-style clips */
+  .music-player-box video {
+    width: 100% !important;
+    height: 320px !important;
+    max-height: 320px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  /* ── PHOTOS PAGE: Stack polaroids vertically, no overlap ── */
+  .photos-page {
+    position: relative !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 15px !important;
+    padding-top: 60px !important;   /* room for the absolute title */
+    height: auto !important;
+    min-height: unset !important;
   }
+
+  /* Title stays pinned at the top of the scroll area */
+  .absolute-title {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-bottom: 18px !important;
+    font-size: 1.6rem !important;
+  }
+
+  /* Each polaroid: take full usable width, no absolute positioning */
+  .polaroid {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 85% !important;
+    max-width: 300px !important;
+    margin: 0 auto 22px auto !important;
+  }
+
+  /* Alternating gentle tilt — keeps the polaroid feel without overlap */
+  .polaroid:nth-child(odd) {
+    transform: rotate(4deg) !important;
+  }
+  .polaroid:nth-child(even) {
+    transform: rotate(-4deg) !important;
+  }
+
+  /* Image inside polaroid: taller, faces visible from top */
+  .polaroid img,
+  .polaroid .polaroid-img-placeholder {
+    width: 100% !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    object-position: center top !important;  /* keeps faces in frame */
+    display: block !important;
+  }
+
+  /* ── BOUQUET PAGE: Stack cleanly, bouquet first ── */
+  .bouquet-page {
+    padding-bottom: 20px !important;
+    height: auto !important;
+  }
+
+  .bouquet-layout {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 18px !important;
+    margin-top: 12px !important;
+  }
+
+  /* Flower bouquet comes first on mobile */
   .bouquet-center {
-    order: -1 !important; /* نخلي بوكيه الورد يظهر أول حاجة فوق خالص */
-    margin-bottom: 15px !important;
-  }
-  .speech-col {
+    order: -1 !important;
     width: 100% !important;
     display: flex !important;
-    flex-wrap: wrap !important; /* نخلي الكلام ييجي جنب بعضه أو تحت بعضه بشياكة */
+    justify-content: center !important;
+  }
+
+  /* Shrink the bouquet image so it never gets cut off */
+  .bouquet-circle-placeholder {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  /* Both speech columns side-by-side in a 2×N grid */
+  .bouquet-layout > .speech-col {
+    width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 10px !important;
   }
+
   .speech-bubble {
-    width: 45% !important; /* نص الشاشة لكل جملة */
-    font-size: 0.8rem !important;
-    margin: 0 !important;
-  }
-
-  /* 3. تظبيط صفحة الفيديو المفعص (Music) */
-  .music-page {
-    flex-direction: column !important;
-    padding-top: 20px !important;
-  }
-  .music-col {
-    width: 100% !important;
-    margin-bottom: 20px !important;
-  }
-  .music-player-box {
-    width: 100% !important;
-    max-width: 300px !important; /* ندي مساحة كويسة للفيديو */
-    height: auto !important;
-    margin: 0 auto !important;
-  }
-  .music-player-box video {
-    width: 100% !important;
-    height: 400px !important; /* ندي الفيديو طول مناسب لفيديوهات التيك توك/الريلز */
-    object-fit: cover !important;
-  }
-
-  /* 4. تظبيط الوشوش المقصوصة في صفحة الصور */
-  .photos-page {
-    display: flex !important;
-    flex-direction: column !important;
-    padding-top: 20px !important;
-  }
-  .polaroid {
-    width: 90% !important;
-    max-width: 320px !important;
-    margin: 10px auto 25px auto !important;
-    /* نلغي الأماكن العشوائية عشان ميغطوش على بعض */
-    position: relative !important;
-    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
-    transform: none !important; /* نلغي الميلان في الموبايل عشان الشاشة ضيقة */
-  }
-  .polaroid-img-placeholder {
-    height: 300px !important; /* طول ممتاز للصورة */
-    object-fit: cover !important;
-    object-position: center top !important; /* ده السطر اللي بيخلي التركيز على الوشوش من فوق عشان متتقصش */
+    width: calc(50% - 10px) !important;
+    font-size: 0.78rem !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
   }
 }
