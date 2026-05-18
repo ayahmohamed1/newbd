@@ -1,0 +1,94 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fde8ed 0%, #f9c6d0 60%, #f4a7b9 100%);
+  padding: 28px 16px 100px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--pink-deep);
+  text-align: center;
+  margin-bottom: 28px;
+  text-shadow:
+    -2px -2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px 2px 0 #fff,
+    0 2px 8px rgba(196,80,106,0.3);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 10;
+}
+
+.polaroidGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  z-index: 6;
+}
+
+.polaroid {
+  background: white;
+  border-radius: 4px;
+  padding: 10px 10px 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transform: rotate(var(--rotate, 0deg));
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.polaroid:hover {
+  box-shadow: 0 10px 36px rgba(196,80,106,0.3);
+}
+
+.photoArea {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #e8f4e8;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.uploadHint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(249, 198, 208, 0.5);
+  color: var(--pink-deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.polaroid:hover .uploadHint {
+  opacity: 1;
+}
+
+@media (max-width: 360px) {
+  .polaroidGrid {
+    gap: 12px;
+  }
+}

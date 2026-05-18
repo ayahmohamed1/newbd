@@ -1,0 +1,32 @@
+.navBar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.homeBtn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--pink-deep);
+  border: 3px solid var(--white);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(196,80,106,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.homeBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(196,80,106,0.5);
+}
+
+.homeBtn svg {
+  width: 22px;
+  height: 22px;
+}
