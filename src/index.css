@@ -443,3 +443,42 @@ body {
   border-radius: 50%;
   background-color: #fcb1c7;
 }
+/* =========================================
+   تعديلات الموبايل (Responsive Design)
+========================================= */
+@media (max-width: 768px) {
+  /* تظبيط حجم الكارت الأساسي */
+  .main-card {
+    width: 95vw;
+    height: 90vh;
+    padding: 15px;
+  }
+
+  /* تصغير الخطوط شوية عشان متخرجش بره الشاشة */
+  .stroke-title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  /* تظبيط شبكة الهدايا (المربعات) في صفحة MainUI */
+  .gifts-grid {
+    gap: 15px;
+  }
+  .gift-box {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* تظبيط المسافات السفلية لزراير الباك والهوم */
+  .card-content-scroll {
+    padding-bottom: 100px;
+  }
+
+  /* تظبيط ألبوم الصور عشان ميغطيش على بعضه في الموبايل */
+  .polaroid {
+    transform: scale(0.8) !important;
+  }
+}

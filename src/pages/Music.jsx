@@ -29,22 +29,23 @@ export default function Music() {
         {/* ضفنا position: 'relative' هنا عشان الزرار يظبط في النص */}
         <div className="music-player-box" style={{ background: 'transparent', border: 'none', position: 'relative' }}>
           
-          <video 
-            ref={videoRef}
-            src="/music2.mp4" 
-            controls={true}
-            playsInline
-            onPlay={() => setIsPlaying(true)}   /* لو اليوزر شغله من الشريط تحت، الزرار يختفي */
-            onPause={() => setIsPlaying(false)} /* لو وقفه، الزرار يرجع يظهر */
-            style={{ 
-              width: '100%', 
-              height: '100%', 
-              maxHeight: '300px', 
-              objectFit: 'contain',
-              borderRadius: '15px',
-              boxShadow: '0px 4px 15px rgba(0,0,0,0.1)'
-            }} 
-          />
+         <video 
+  ref={videoRef}
+  src="/music2.mp4" 
+  controls={true}
+  playsInline={true}   /* ضروري جداً للموبايل */
+  preload="auto"       /* بيجبر الموبايل يحمل الفيديو عشان يشتغل فوراً لما تدوس */
+  onPlay={() => setIsPlaying(true)}   
+  onPause={() => setIsPlaying(false)} 
+  style={{ 
+    width: '100%', 
+    height: '100%', 
+    maxHeight: '300px', 
+    objectFit: 'contain',
+    borderRadius: '15px',
+    boxShadow: '0px 4px 15px rgba(0,0,0,0.1)'
+  }} 
+/>
 
           {/* 4. تصميم زرار الـ Play الكبير في نص الفيديو */}
           {!isPlaying && (
