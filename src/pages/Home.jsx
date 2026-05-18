@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
+// استيراد الاستيكر من فولدر assets
+import catVideo from '../assets/hbd.mp4';
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
     <div className="home-page">
-      
-      {/* الاستيكر مربوط مباشرة بفولدر public وجاهز للتشغيل التلقائي الإجباري */}
       <video 
-        src="/hbd.mp4" 
+        src={catVideo} 
         autoPlay={true}
         loop={true}
         muted={true}
@@ -17,7 +17,7 @@ export default function Home() {
           width: '150px', 
           height: '150px', 
           objectFit: 'contain',
-          pointerEvents: 'none' /* عشان اليوزر معرفش يوقفه بالخطأ */
+          pointerEvents: 'none'
         }} 
       />
 
